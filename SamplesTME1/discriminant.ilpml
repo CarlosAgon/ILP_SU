@@ -1,0 +1,8 @@
+let a=1 and b=3 and c=1 in
+let d=b*b-4*a*c in
+if d>0 then
+print("discriminant positif : deux racines")
+else if d<0 then
+"discriminant négatif : aucune racine"
+else 
+"discriminant nul : une seule racine"
