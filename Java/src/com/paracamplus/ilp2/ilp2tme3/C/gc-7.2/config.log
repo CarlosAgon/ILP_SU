@@ -36,6 +36,7 @@ PATH: /bin
 PATH: /usr/games
 PATH: /usr/local/games
 PATH: /snap/bin
+PATH: /opt/mssql-tools/bin
 
 
 ## ----------- ##
@@ -57,10 +58,8 @@ configure:2796: result: yes
 configure:2947: checking for a thread-safe mkdir -p
 configure:2986: result: /bin/mkdir -p
 configure:2993: checking for gawk
-configure:3023: result: no
-configure:2993: checking for mawk
-configure:3009: found /usr/bin/mawk
-configure:3020: result: mawk
+configure:3009: found /usr/bin/gawk
+configure:3020: result: gawk
 configure:3031: checking whether make sets $(MAKE)
 configure:3053: result: yes
 configure:3082: checking whether make supports nested variables
@@ -792,7 +791,7 @@ ac_cv_path_GREP=/bin/grep
 ac_cv_path_SED=/bin/sed
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
-ac_cv_prog_AWK=mawk
+ac_cv_prog_AWK=gawk
 ac_cv_prog_CPP='gcc -E'
 ac_cv_prog_CXXCPP='g++ -E'
 ac_cv_prog_ac_ct_AR=ar
@@ -869,7 +868,7 @@ AUTOHEADER='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/Java/src/com/paracamplus/il
 AUTOMAKE='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/Java/src/com/paracamplus/ilp2/ilp2tme3/C/gc-7.2/missing automake-1.14'
 AVOID_CPP_LIB_FALSE=''
 AVOID_CPP_LIB_TRUE='#'
-AWK='mawk'
+AWK='gawk'
 CC='gcc'
 CCAS='gcc'
 CCASDEPMODE='depmode=gcc3'

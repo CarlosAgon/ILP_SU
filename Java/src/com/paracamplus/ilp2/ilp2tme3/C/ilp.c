@@ -29,10 +29,10 @@ struct ILP_Class ILP_object_Class_class = {
 
 struct ILP_Class ILP_object_Object_class = {
      &ILP_object_Class_class,
-     { { NULL,
+     { { 0,
          "Object",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -43,7 +43,7 @@ struct ILP_Class ILP_object_Method_class = {
      { { &ILP_object_Object_class,
          "Method",
          0,
-         NULL,
+         0,
          3,
          { ILP_print,
            ILP_classOf } } }
@@ -65,7 +65,7 @@ struct ILP_Class ILP_object_Closure_class = {
      { { &ILP_object_Object_class,
          "Closure",
          3,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -87,7 +87,7 @@ struct ILP_Class ILP_object_Integer_class = {
      { { &ILP_object_Object_class,
          "Integer",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -98,7 +98,7 @@ struct ILP_Class ILP_object_Float_class = {
      { { &ILP_object_Object_class,
          "Float",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -109,7 +109,7 @@ struct ILP_Class ILP_object_Boolean_class = {
      { { &ILP_object_Object_class,
          "Boolean",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -120,7 +120,7 @@ struct ILP_Class ILP_object_String_class = {
      { { &ILP_object_Object_class,
          "String",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -131,7 +131,7 @@ struct ILP_Class ILP_object_Exception_class = {
      { { &ILP_object_Object_class,
          "Exception",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -145,7 +145,7 @@ struct ILP_Class ILP_object_Vector_class = {
      { { &ILP_object_Object_class,
          "Vector",
          0,
-         NULL,
+         0,
          2,
          { ILP_print,
            ILP_classOf } } }
@@ -161,7 +161,7 @@ struct ILP_Class ILP_object_Vector_class = {
 struct ILP_Field ILP_object_super_field = {
      &ILP_object_Field_class,
      { { &ILP_object_Class_class,
-         NULL,
+         0,
          "super",
          0 } }
 };
@@ -169,7 +169,7 @@ struct ILP_Field ILP_object_super_field = {
 struct ILP_Field ILP_object_defining_class_field = {
      &ILP_object_Field_class,
      { { &ILP_object_Field_class,
-         NULL,
+         0,
          "defining_class",
          0 } }
 };
@@ -185,7 +185,7 @@ struct ILP_Field ILP_object_previous_field_field = {
 struct ILP_Field ILP_object_class_defining_field = {
      &ILP_object_Field_class,
      { { &ILP_object_Method_class,
-         NULL,
+         0,
          "class_defining",
          0 } }
 };
@@ -193,7 +193,7 @@ struct ILP_Field ILP_object_class_defining_field = {
 struct ILP_Field ILP_object_value_field = {
      &ILP_object_Field_class,
      { { &ILP_object_Box_class,
-         NULL,
+         0,
          "value",
          0 } }
 };
@@ -244,7 +244,7 @@ struct ILP_Object ILP_object_false = {
 static struct ILP_Exception ILP_the_exception =  {
      &ILP_object_Exception_class,
      { { "", 
-         { NULL } } }
+         { 0 } } }
 };
 
 /** Global variables
@@ -253,11 +253,11 @@ static struct ILP_Exception ILP_the_exception =  {
  */
 
 static struct ILP_catcher ILP_the_original_catcher = {
-     NULL
+     0
 };
 struct ILP_catcher *ILP_current_catcher = &ILP_the_original_catcher;
 
-ILP_Object ILP_current_exception = NULL;
+ILP_Object ILP_current_exception = 0;
 
 /** Raise exception. */
 
@@ -300,7 +300,7 @@ ILP_error (char *message)
               "Error: %s\n",
               message);
      fprintf(stderr, "%s", ILP_the_exception._content.asException.message);
-     ILP_the_exception._content.asException.culprit[0] = NULL;
+     ILP_the_exception._content.asException.culprit[0] = 0;
      return ILP_throw((ILP_Object) &ILP_the_exception);
 }
 
@@ -315,7 +315,7 @@ ILP_domain_error (char *message, ILP_Object o)
               message, (void*) o);
      fprintf(stderr, "%s", ILP_the_exception._content.asException.message);
      ILP_the_exception._content.asException.culprit[0] = o;
-     ILP_the_exception._content.asException.culprit[1] = NULL;
+     ILP_the_exception._content.asException.culprit[1] = 0;
      return ILP_throw((ILP_Object) &ILP_the_exception);
 }
 
@@ -340,7 +340,7 @@ ILP_is_a (ILP_Object o, ILP_Class class)
           return 1;
      } else {
           oclass = oclass->_content.asClass.super;
-          /* Object's superclass is NULL */
+          /* Object's superclass is 0 */
           while ( oclass ) {
                if ( oclass == class ) {
                     return 1;
@@ -358,7 +358,7 @@ ILP_is_subclass_of (ILP_Class oclass, ILP_Class otherclass)
           return 1;
      } else {
           oclass = oclass->_content.asClass.super;
-          /* Object's superclass is NULL */
+          /* Object's superclass is 0 */
           while ( oclass ) {
                if ( oclass == otherclass ) {
                     return 1;
@@ -390,10 +390,10 @@ ILP_find_method (ILP_Object receiver,
           ILP_the_exception._content.asException.culprit[0] = receiver;
           ILP_the_exception._content.asException.culprit[1] = 
                (ILP_Object) method;
-          ILP_the_exception._content.asException.culprit[2] = NULL;
+          ILP_the_exception._content.asException.culprit[2] = 0;
           ILP_throw((ILP_Object) &ILP_the_exception);
           /* UNREACHED */
-          return NULL;          
+          return 0;          
      };
      if ( argc != method->_content.asMethod.arity ) {
           /* Signaler une erreur d'arité */
@@ -409,10 +409,10 @@ ILP_find_method (ILP_Object receiver,
           ILP_the_exception._content.asException.culprit[0] = receiver;
           ILP_the_exception._content.asException.culprit[1] = 
                (ILP_Object) method;
-          ILP_the_exception._content.asException.culprit[2] = NULL;
+          ILP_the_exception._content.asException.culprit[2] = 0;
           ILP_throw((ILP_Object) &ILP_the_exception);
           /* UNREACHED */
-          return NULL;
+          return 0;
      };
      {
           int index = method->_content.asMethod.index;
@@ -426,21 +426,21 @@ ILP_find_and_call_super_method (
      ILP_general_function super_method, 
      ILP_Object arguments[1] ) 
 { 
-     /* assert( super_method != NULL ); */ 
+     /* assert( super_method != 0 ); */ 
      ILP_Object self = arguments[0];
      int arity = current_method->_content.asMethod.arity;
      switch ( arity ) { 
           case 0: { 
-               return (*super_method)(NULL, self); 
+               return (*super_method)(0, self); 
           } 
           case 1: { 
-               return (*super_method)(NULL, self, arguments[1]); 
+               return (*super_method)(0, self, arguments[1]); 
           } 
           case 2: { 
-               return (*super_method)(NULL, self, arguments[1], arguments[2]); 
+               return (*super_method)(0, self, arguments[1], arguments[2]); 
           } 
           case 3: { 
-               return (*super_method)(NULL, self, arguments[1],  
+               return (*super_method)(0, self, arguments[1],  
                                             arguments[2],  
                                             arguments[3]); 
           } 
@@ -455,10 +455,10 @@ ILP_find_and_call_super_method (
                ILP_the_exception._content.asException.culprit[0] = self; 
                ILP_the_exception._content.asException.culprit[1] =  
                     (ILP_Object) current_method; 
-               ILP_the_exception._content.asException.culprit[2] = NULL; 
+               ILP_the_exception._content.asException.culprit[2] = 0; 
                ILP_throw((ILP_Object) &ILP_the_exception); 
                /* UNREACHED */ 
-               return NULL; 
+               return 0; 
           } 
      } 
 }
@@ -470,7 +470,7 @@ ILP_dont_call_super_method (
      ILP_Object arguments[1] )
 {
      ILP_Object self = arguments[0];
-     /* assert ( super_method == NULL ); */
+     /* assert ( super_method == 0 ); */
      snprintf(ILP_the_exception._content.asException.message,
               ILP_EXCEPTION_BUFFER_LENGTH,
               "No supermethod %s\nCulprit: 0x%p\n",
@@ -481,10 +481,10 @@ ILP_dont_call_super_method (
      ILP_the_exception._content.asException.culprit[0] = self;
      ILP_the_exception._content.asException.culprit[1] = 
           (ILP_Object) current_method;
-     ILP_the_exception._content.asException.culprit[2] = NULL;
+     ILP_the_exception._content.asException.culprit[2] = 0;
      ILP_throw((ILP_Object) &ILP_the_exception);
      /* UNREACHED */
-     return NULL;
+     return 0;
 }
 
 ILP_general_function
@@ -504,10 +504,10 @@ ILP_find_invokee (ILP_Object closure, int argc)
           fprintf(stderr, "%s", ILP_the_exception._content.asException.message);
           ILP_the_exception._content.asException.culprit[0] = 
                (ILP_Object) closure;
-          ILP_the_exception._content.asException.culprit[1] = NULL;
+          ILP_the_exception._content.asException.culprit[1] = 0;
           ILP_throw((ILP_Object) &ILP_the_exception);
           /* UNREACHED */
-          return NULL;
+          return 0;
      }
 
      ILP_general_function f = closure->_content.asClosure.function;
@@ -594,7 +594,7 @@ ILP_Object
 ILP_malloc (int size, ILP_Class class)
 {
      ILP_Object result = ILP_MALLOC(size);
-     if ( result == NULL ) {
+     if ( result == 0 ) {
           return ILP_die("Memory exhaustion");
      };
      result->_class = class;
@@ -638,8 +638,8 @@ ILP_make_float (double d)
 ILP_Object
 ILP_pi ()
 {
-     static ILP_Object object_pi = NULL;
-     if ( object_pi == NULL ) {
+     static ILP_Object object_pi = 0;
+     if ( object_pi == 0 ) {
           object_pi = ILP_make_float(ILP_PI_VALUE);
      }
      return object_pi;
@@ -903,7 +903,7 @@ void
 ILP_print_fields (ILP_Object o,
                   ILP_Field last)
 {
-     if ( last == NULL ) {
+     if ( last == 0 ) {
           return;
      };
      ILP_print_fields(o, last->_content.asField.previous_field);
@@ -981,38 +981,58 @@ ILP_sinus (ILP_Object o)
      }
 }
 
-/*
+
 ILP_Object 
 ILP_make_vector (ILP_Object taille,ILP_Object valeur)
 {
-     if ( ILP_isInteger(o1) && ((o1->_content.asInteger)>0) ) ){
-          if(ILP_isInteger(o2)){
-               ILP_Object result = ILP_AllocateString(size);   
-		}
-		if(ILP_isFloat(o2)){
-
-		}
-	}
+    if ( ILP_isInteger(taille) && ((taille->_content.asInteger)>0) ) {
+        int size=taille->_content.asInteger;
+        if(ILP_isInteger(valeur)){
+            ILP_Object result = ILP_AllocateVector(size,valeur);
+            result->_content.asVector._size = size;
+            int i;
+            for (i=0; i<size; i++){
+                memmove((result->_content.asVector.asData)  \
+                +i*sizeof(&ILP_object_Integer_class),         \
+                &valeur, sizeof(&ILP_object_Integer_class));               
+            }
+            return result;
+        }
+        else if(ILP_isFloat(valeur)){
+            ILP_Object result = ILP_AllocateVector(size,valeur);
+            result->_content.asVector._size = size;
+            int i;
+            for (i=0; i<size; i++){
+                memmove((result->_content.asVector.asData)    \
+                +i*sizeof(&ILP_object_Float_class),            \
+                &valeur,sizeof(&ILP_object_Float_class));
+            }
+            return result;       
+        }
+    }return 0;
 }
 
 
 ILP_Object 
 ILP_vector_length (ILP_Object vector)
 {
-     	
+    if(ILP_isVector(vector))
+        return vector->_content.asVector._size;     
+    return 0;   
 }
 
-*/
-     
-/*
+
 ILP_Object 
      ILP_vector_get (ILP_Object vector,ILP_Object index)
 {
-     if((ILP_classOf(vector)==&ILP_object_Class_class) && (index->_index.asInteger)){
-          
-     }
-
+    if(ILP_isVector(vector) && ILP_isInteger(index) \
+    && (index->_content.asInteger >= 0)             \
+    && (index->_content.asInteger < vector->_content.asVector._size) ){
+        return *(vector->_content.asVector.asData    \
+        +index->_content.asInteger*sizeof( (vector->_content.asVector.asData[0])->_class));
+    }
+    return 0;
 }
-*/
+
 ///////////////////////////////////////////////////////////////////////////////////
 /* end of ilpObj.c */

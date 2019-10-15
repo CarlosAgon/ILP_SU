@@ -47,6 +47,12 @@ typedef struct ILP_Object {
                int      _size;
                char     asCharacter[1];
           } asString;
+////////////////////////////////////////////////////////////////////////////////////
+          struct asVector {
+               int      _size;
+               struct   ILP_Object* asData[1];
+          } asVector;
+////////////////////////////////////////////////////////////////////////////////////
           struct asException {
                char                message[ILP_EXCEPTION_BUFFER_LENGTH];
                struct ILP_Object*  culprit[ILP_EXCEPTION_CULPRIT_LENGTH];
@@ -296,6 +302,21 @@ extern ILP_Object ILP_dont_call_super_method(
 ///////////////////////////////////////////////////////////////////////////////////
 /** Vector */
 
+#define ILP_Vector2ILP(v) \
+  ILP_make_vector(v)
+
+#define ILP_AllocateVector(length,o) \
+  ILP_malloc(sizeof(struct ILP_Object) \
+             + (sizeof((o)->_class) * (length)), &ILP_object_Vector_class)//*******
+
+#define ILP_isVector(o) \
+  ((o)->_class == &ILP_object_Vector_class)
+
+#define ILP_CheckIfVector(o) \
+  if ( ! ILP_isVector(o) ) { \
+       ILP_domain_error("Not a vector", o); \
+  };
+  
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -363,9 +384,10 @@ extern struct ILP_Class ILP_object_Integer_class;
 extern struct ILP_Class ILP_object_Float_class;
 extern struct ILP_Class ILP_object_Boolean_class;
 extern struct ILP_Class ILP_object_String_class;
-extern struct ILP_Class ILP_object_Exception_class;
 ////////////////////////////////////////////////////////////////////////////////////
 extern struct ILP_Class ILP_object_Vector_class;
+////////////////////////////////////////////////////////////////////////////////////
+extern struct ILP_Class ILP_object_Exception_class;
 
 extern struct ILP_Field ILP_object_super_field;
 extern struct ILP_Field ILP_object_defining_class_field;

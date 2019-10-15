@@ -15,7 +15,7 @@ public class vectorLength extends com.paracamplus.ilp1.interpreter.primitive.Una
 		if(vector instanceof Vector){
 	    	 return ((Vector<?>) vector).size();
 		}
-		throw new EvaluationException("Non numeric argument");
+		throw new EvaluationException("Non vector argument");
 	}
 
 }

@@ -16,7 +16,7 @@ public class vectorGet extends com.paracamplus.ilp1.interpreter.primitive.Primit
 	    if((vector instanceof Vector) && (index instanceof BigInteger)){
 	    	 return ((Vector<?>) vector).get(((BigInteger) index).intValue());
 		}
-		throw new EvaluationException("Non numeric argument");
+		throw new EvaluationException("Non numeric argument 2");
 	}
 
 

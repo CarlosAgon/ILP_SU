@@ -1,0 +1,3 @@
+let v= makeVector(3,5) in (
+    print(v);
+    vectorGet(v,1) )

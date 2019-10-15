@@ -706,7 +706,7 @@ ATOMIC_OPS_LIBS =
 AUTOCONF = ${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/Java/src/com/paracamplus/ilp2/ilp2tme3/C/gc-7.2/missing autoconf
 AUTOHEADER = ${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/Java/src/com/paracamplus/ilp2/ilp2tme3/C/gc-7.2/missing autoheader
 AUTOMAKE = ${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/Java/src/com/paracamplus/ilp2/ilp2tme3/C/gc-7.2/missing automake-1.14
-AWK = mawk
+AWK = gawk
 CC = gcc
 CCAS = gcc
 CCASDEPMODE = depmode=gcc3
