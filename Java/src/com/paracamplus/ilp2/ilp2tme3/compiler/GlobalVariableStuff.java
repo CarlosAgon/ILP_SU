@@ -6,24 +6,29 @@
  ***************************************************************** */
 package com.paracamplus.ilp2.ilp2tme3.compiler;
 
-import java.io.Writer;
-import java.math.BigDecimal;
+import com.paracamplus.ilp1.compiler.Primitive;
+import com.paracamplus.ilp1.compiler.interfaces.IGlobalVariableEnvironment;
 
-import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
-import com.paracamplus.ilp1.interpreter.primitive.Newline;
-import com.paracamplus.ilp1.interpreter.primitive.Print;
-import com.paracamplus.ilp2.ilp2tme3.interpreter.primitive.*;
+
 
 public class GlobalVariableStuff {
-    public static void fillGlobalVariables (
-            IGlobalVariableEnvironment env,
-            Writer out ) {
-        env.addGlobalVariableValue("pi", new BigDecimal("3.1415926535"));
-        env.addGlobalVariableValue(new Print(out));
-        env.addGlobalVariableValue(new Newline(out));
-        env.addGlobalVariableValue(new Sinus());
-        env.addGlobalVariableValue(new makeVector());
-        env.addGlobalVariableValue(new vectorGet());
-        env.addGlobalVariableValue(new vectorLength());
+    public static void fillGlobalVariables (IGlobalVariableEnvironment env) {
+        env.addGlobalVariableValue("pi", "ILP_PI");
+        env.addGlobalFunctionValue(
+                new Primitive("print", "ILP_print", 1));
+        env.addGlobalFunctionValue(
+                new Primitive("newline", "ILP_newline", 0));
+        env.addGlobalFunctionValue(
+                new Primitive("throw", "ILP_throw", 1));
+        env.addGlobalFunctionValue(
+                new Primitive("sinus", "ILP_sinus", 1));
+        env.addGlobalFunctionValue(
+                new Primitive("makeVector", "ILP_make_vector", 2));
+        env.addGlobalFunctionValue(
+                new Primitive("vectorGet", "ILP_vector_get", 2));
+        env.addGlobalFunctionValue(
+                new Primitive("vectorLength", "ILP_vector_length", 1));
     }
+
+
 }

@@ -5,6 +5,10 @@
 /* Global variables */ 
 ILP_Object pi;
 
+/* Global prototypes */ 
+
+/* Global functions */ 
+
 
 ILP_Object ilp_program () 
 { 

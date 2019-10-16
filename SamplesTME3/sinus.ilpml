@@ -1,1 +1,1 @@
-print(sinus(0));sinus(0.0)
+print(sinus(0.0))

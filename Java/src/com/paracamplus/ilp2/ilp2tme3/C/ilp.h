@@ -50,7 +50,8 @@ typedef struct ILP_Object {
 ////////////////////////////////////////////////////////////////////////////////////
           struct asVector {
                int      _size;
-               struct   ILP_Object* asData[1];
+               //struct   ILP_Object* asData[1];
+               struct   ILP_Object*     asData[1];
           } asVector;
 ////////////////////////////////////////////////////////////////////////////////////
           struct asException {
@@ -305,9 +306,9 @@ extern ILP_Object ILP_dont_call_super_method(
 #define ILP_Vector2ILP(v) \
   ILP_make_vector(v)
 
-#define ILP_AllocateVector(length,o) \
+#define ILP_AllocateVector(length) \
   ILP_malloc(sizeof(struct ILP_Object) \
-             + (sizeof((o)->_class) * (length)), &ILP_object_Vector_class)//*******
+             + (sizeof(ILP_Object) * (length)), &ILP_object_Vector_class)
 
 #define ILP_isVector(o) \
   ((o)->_class == &ILP_object_Vector_class)

@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.paracamplus.ilp1.interpreter.GlobalVariableEnvironment;
-import com.paracamplus.ilp2.ilp2tme3.compiler.GlobalVariableStuff;
+import com.paracamplus.ilp2.ilp2tme3.interpreter.GlobalVariableStuff;
 import com.paracamplus.ilp1.interpreter.OperatorEnvironment;
 import com.paracamplus.ilp1.interpreter.OperatorStuff;
 import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;

@@ -922,6 +922,24 @@ ILP_print (ILP_Object self)
           fprintf(stdout, "%s", (ILP_isTrue(self) ? "true" : "false"));
      } else if ( self->_class == &ILP_object_String_class ) {
           fprintf(stdout, "%s", self->_content.asString.asCharacter);
+     } else if ( self->_class == &ILP_object_Vector_class ){
+
+         fprintf(stdout,"[");
+         //must be integer
+
+         //ILP_print(ILP_vector_get(self,index));
+         ILP_Object index;
+         int i;            
+         index=ILP_AllocateInteger();
+         for(i=0;i<self->_content.asVector._size-1;i++){
+             index->_content.asInteger=i;       
+             ILP_print(ILP_vector_get(self,index));
+             fprintf(stdout,", ");
+         }
+         index->_content.asInteger=i;
+         ILP_print(ILP_vector_get(self,index));
+         //ILP_print(self->_content.asVector.asData[self->_content.asVector._size-1]);
+         fprintf(stdout,"]");
      } else if ( self->_class == &ILP_object_Class_class ) {
           fprintf(stdout, "<Class:%s>", self->_content.asClass.name);
      } else if ( self->_class == &ILP_object_Method_class ) {
@@ -977,62 +995,66 @@ ILP_sinus (ILP_Object o)
                sin(o->_content.asFloat);
           return result;
      } else {
-               return ILP_domain_error("Not a number", o);
+            return ILP_domain_error("Not a number", o);
      }
 }
 
 
+/*
+ILP_Object
+ILP_make_string (char *s)
+{
+     int size = strlen(s);
+     ILP_Object result = ILP_AllocateString(size);
+     result->_content.asString._size = size;
+     memmove(result->_content.asString.asCharacter, s, size);
+     return result;
+}
+*/
 ILP_Object 
 ILP_make_vector (ILP_Object taille,ILP_Object valeur)
 {
-    if ( ILP_isInteger(taille) && ((taille->_content.asInteger)>0) ) {
+    if ( ILP_isInteger(taille) && ((taille->_content.asInteger)>0) \
+    && ILP_isInteger(valeur)) {
         int size=taille->_content.asInteger;
-        if(ILP_isInteger(valeur)){
-            ILP_Object result = ILP_AllocateVector(size,valeur);
-            result->_content.asVector._size = size;
-            int i;
-            for (i=0; i<size; i++){
-                memmove((result->_content.asVector.asData)  \
-                +i*sizeof(&ILP_object_Integer_class),         \
-                &valeur, sizeof(&ILP_object_Integer_class));               
-            }
-            return result;
+        ILP_Object result = ILP_AllocateVector(size);
+        result->_content.asVector._size = size;
+        int i;
+        for (i=0; i<size; i++){
+            //fprintf(stdout,"%d\n",valeur->_content.asInteger);
+            //fprintf(stdout,"make %d %p\n",i,(result->_content.asVector.asData)  \
+            +i*sizeof(struct ILP_Object));
+            memmove((result->_content.asVector.asData)  \
+            +i*sizeof(struct ILP_Object),         \
+            &valeur, sizeof(struct ILP_Object));
         }
-        else if(ILP_isFloat(valeur)){
-            ILP_Object result = ILP_AllocateVector(size,valeur);
-            result->_content.asVector._size = size;
-            int i;
-            for (i=0; i<size; i++){
-                memmove((result->_content.asVector.asData)    \
-                +i*sizeof(&ILP_object_Float_class),            \
-                &valeur,sizeof(&ILP_object_Float_class));
-            }
-            return result;       
-        }
+        return result;
     }return 0;
 }
-
 
 ILP_Object 
 ILP_vector_length (ILP_Object vector)
 {
-    if(ILP_isVector(vector))
-        return vector->_content.asVector._size;     
-    return 0;   
+    if(ILP_isVector(vector)){
+        ILP_Object result = ILP_AllocateInteger();
+        result->_content.asInteger = vector->_content.asVector._size;
+        return result;
+    }
+    return ILP_domain_error("vector is not a Vector", vector);
 }
-
 
 ILP_Object 
-     ILP_vector_get (ILP_Object vector,ILP_Object index)
+ILP_vector_get (ILP_Object vector,ILP_Object index)
 {
-    if(ILP_isVector(vector) && ILP_isInteger(index) \
-    && (index->_content.asInteger >= 0)             \
-    && (index->_content.asInteger < vector->_content.asVector._size) ){
-        return *(vector->_content.asVector.asData    \
-        +index->_content.asInteger*sizeof( (vector->_content.asVector.asData[0])->_class));
-    }
-    return 0;
+        if( ILP_isVector(vector) && ILP_isInteger(index)&& \
+        (index->_content.asInteger>=0) && \
+        (index->_content.asInteger<vector->_content.asVector._size)){
+           // fprintf(stdout,"get %d %p\n",index->_content.asInteger,(vector->_content.asVector.asData+sizeof(struct ILP_Object)\
+            //*index->_content.asInteger));
+            return *(vector->_content.asVector.asData+\
+            sizeof(struct ILP_Object)*index->_content.asInteger);
+        }
+    return ILP_domain_error("vector is not a Vector or index isn't an integer or something else", vector);
 }
-
 ///////////////////////////////////////////////////////////////////////////////////
 /* end of ilpObj.c */

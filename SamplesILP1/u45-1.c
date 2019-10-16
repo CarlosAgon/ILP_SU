@@ -5,13 +5,17 @@
 /* Global variables */ 
 ILP_Object print;
 
+/* Global prototypes */ 
+
+/* Global functions */ 
+
 
 ILP_Object ilp_program () 
 { 
 { 
-  ILP_Object ilptmp233; 
-ilptmp233 =  ILP_String2ILP("Ceci est une chaine"); 
-return ILP_print(ilptmp233);
+  ILP_Object ilptmp615; 
+ilptmp615 =  ILP_String2ILP("Ceci est une chaine"); 
+return ILP_print(ilptmp615);
 }
 
 } 

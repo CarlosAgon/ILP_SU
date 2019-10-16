@@ -3,6 +3,8 @@
 #include "ilp.h" 
 
 /* Global variables */ 
+ILP_Object print;
+ILP_Object makeVector;
 
 /* Global prototypes */ 
 
@@ -12,12 +14,25 @@
 ILP_Object ilp_program () 
 { 
 { 
-  ILP_Object ilptmp454; 
-  ILP_Object ilptmp455; 
-ilptmp454 = ILP_Integer2ILP(44); 
-ilptmp455 = ILP_Integer2ILP(33); 
-return ILP_LessThan(ilptmp454, ilptmp455);
-} 
+  ILP_Object ilptmp3; 
+{ 
+  ILP_Object ilptmp4; 
+  ILP_Object ilptmp5; 
+ilptmp4 = ILP_Integer2ILP(6); 
+ilptmp5 = ILP_Integer2ILP(5); 
+ilptmp3 = ILP_make_vector(ilptmp4, ilptmp5);
+}
+
+  {
+    ILP_Object v1 = ilptmp3;
+{ 
+  ILP_Object ilptmp6; 
+ilptmp6 = v1; 
+return ILP_print(ilptmp6);
+}
+
+  }
+}
 
 } 
 

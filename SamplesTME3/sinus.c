@@ -3,6 +3,8 @@
 #include "ilp.h" 
 
 /* Global variables */ 
+ILP_Object print;
+ILP_Object sinus;
 
 /* Global prototypes */ 
 
@@ -12,12 +14,14 @@
 ILP_Object ilp_program () 
 { 
 { 
-  ILP_Object ilptmp454; 
-  ILP_Object ilptmp455; 
-ilptmp454 = ILP_Integer2ILP(44); 
-ilptmp455 = ILP_Integer2ILP(33); 
-return ILP_LessThan(ilptmp454, ilptmp455);
-} 
+  ILP_Object ilptmp1; 
+{ 
+  ILP_Object ilptmp2; 
+ilptmp2 = ILP_Float2ILP(0.0); 
+ilptmp1 = ILP_sinus(ilptmp2);
+}
+return ILP_print(ilptmp1);
+}
 
 } 
 

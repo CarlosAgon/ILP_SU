@@ -251,7 +251,7 @@ AM_DEFAULT_VERBOSITY = 1
 AUTOCONF = ${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/libatomic_ops/missing autoconf
 AUTOHEADER = ${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/libatomic_ops/missing autoheader
 AUTOMAKE = ${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/libatomic_ops/missing automake-1.14
-AWK = mawk
+AWK = gawk
 CC = cc
 CCAS = cc
 CCASDEPMODE = depmode=gcc3

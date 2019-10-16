@@ -36,6 +36,7 @@ PATH: /bin
 PATH: /usr/games
 PATH: /usr/local/games
 PATH: /snap/bin
+PATH: /opt/mssql-tools/bin
 
 
 ## ----------- ##
@@ -57,10 +58,8 @@ configure:2796: result: yes
 configure:2947: checking for a thread-safe mkdir -p
 configure:2986: result: /bin/mkdir -p
 configure:2993: checking for gawk
-configure:3023: result: no
-configure:2993: checking for mawk
-configure:3009: found /usr/bin/mawk
-configure:3020: result: mawk
+configure:3009: found /usr/bin/gawk
+configure:3020: result: gawk
 configure:3031: checking whether make sets $(MAKE)
 configure:3053: result: yes
 configure:3082: checking whether make supports nested variables
@@ -142,149 +141,47 @@ configure:4147: result: yes
 configure:4166: checking dependency style of gcc
 configure:4277: result: gcc3
 configure:4351: checking for g++
-configure:4381: result: no
-configure:4351: checking for c++
-configure:4381: result: no
-configure:4351: checking for gpp
-configure:4381: result: no
-configure:4351: checking for aCC
-configure:4381: result: no
-configure:4351: checking for CC
-configure:4381: result: no
-configure:4351: checking for cxx
-configure:4381: result: no
-configure:4351: checking for cc++
-configure:4381: result: no
-configure:4351: checking for cl.exe
-configure:4381: result: no
-configure:4351: checking for FCC
-configure:4381: result: no
-configure:4351: checking for KCC
-configure:4381: result: no
-configure:4351: checking for RCC
-configure:4381: result: no
-configure:4351: checking for xlC_r
-configure:4381: result: no
-configure:4351: checking for xlC
-configure:4381: result: no
+configure:4367: found /usr/bin/g++
+configure:4378: result: g++
 configure:4405: checking for C++ compiler version
 configure:4414: g++ --version >&5
-./configure: line 4416: g++: command not found
-configure:4425: $? = 127
+g++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+configure:4425: $? = 0
 configure:4414: g++ -v >&5
-./configure: line 4416: g++: command not found
-configure:4425: $? = 127
+Using built-in specs.
+COLLECT_GCC=g++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
+OFFLOAD_TARGET_NAMES=nvptx-none
+OFFLOAD_TARGET_DEFAULT=1
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 7.4.0-1ubuntu1~18.04.1' --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-objc-gc=auto --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1) 
+configure:4425: $? = 0
 configure:4414: g++ -V >&5
-./configure: line 4416: g++: command not found
-configure:4425: $? = 127
+g++: error: unrecognized command line option '-V'
+g++: fatal error: no input files
+compilation terminated.
+configure:4425: $? = 1
 configure:4414: g++ -qversion >&5
-./configure: line 4416: g++: command not found
-configure:4425: $? = 127
+g++: error: unrecognized command line option '-qversion'; did you mean '--version'?
+g++: fatal error: no input files
+compilation terminated.
+configure:4425: $? = 1
 configure:4429: checking whether we are using the GNU C++ compiler
 configure:4448: g++ -c   conftest.cpp >&5
-./configure: line 1686: g++: command not found
-configure:4448: $? = 127
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "gc"
-| #define PACKAGE_TARNAME "gc"
-| #define PACKAGE_VERSION "7.2"
-| #define PACKAGE_STRING "gc 7.2"
-| #define PACKAGE_BUGREPORT "bdwgc@lists.opendylan.org"
-| #define PACKAGE_URL ""
-| #define GC_VERSION_MAJOR 7
-| #define GC_VERSION_MINOR 2
-| #define PACKAGE "gc"
-| #define VERSION "7.2"
-| /* end confdefs.h.  */
-| 
-| int
-| main ()
-| {
-| #ifndef __GNUC__
-|        choke me
-| #endif
-| 
-|   ;
-|   return 0;
-| }
-configure:4457: result: no
+configure:4448: $? = 0
+configure:4457: result: yes
 configure:4466: checking whether g++ accepts -g
 configure:4486: g++ -c -g  conftest.cpp >&5
-./configure: line 1686: g++: command not found
-configure:4486: $? = 127
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "gc"
-| #define PACKAGE_TARNAME "gc"
-| #define PACKAGE_VERSION "7.2"
-| #define PACKAGE_STRING "gc 7.2"
-| #define PACKAGE_BUGREPORT "bdwgc@lists.opendylan.org"
-| #define PACKAGE_URL ""
-| #define GC_VERSION_MAJOR 7
-| #define GC_VERSION_MINOR 2
-| #define PACKAGE "gc"
-| #define VERSION "7.2"
-| /* end confdefs.h.  */
-| 
-| int
-| main ()
-| {
-| 
-|   ;
-|   return 0;
-| }
-configure:4501: g++ -c   conftest.cpp >&5
-./configure: line 1686: g++: command not found
-configure:4501: $? = 127
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "gc"
-| #define PACKAGE_TARNAME "gc"
-| #define PACKAGE_VERSION "7.2"
-| #define PACKAGE_STRING "gc 7.2"
-| #define PACKAGE_BUGREPORT "bdwgc@lists.opendylan.org"
-| #define PACKAGE_URL ""
-| #define GC_VERSION_MAJOR 7
-| #define GC_VERSION_MINOR 2
-| #define PACKAGE "gc"
-| #define VERSION "7.2"
-| /* end confdefs.h.  */
-| 
-| int
-| main ()
-| {
-| 
-|   ;
-|   return 0;
-| }
-configure:4517: g++ -c -g  conftest.cpp >&5
-./configure: line 1686: g++: command not found
-configure:4517: $? = 127
-configure: failed program was:
-| /* confdefs.h */
-| #define PACKAGE_NAME "gc"
-| #define PACKAGE_TARNAME "gc"
-| #define PACKAGE_VERSION "7.2"
-| #define PACKAGE_STRING "gc 7.2"
-| #define PACKAGE_BUGREPORT "bdwgc@lists.opendylan.org"
-| #define PACKAGE_URL ""
-| #define GC_VERSION_MAJOR 7
-| #define GC_VERSION_MINOR 2
-| #define PACKAGE "gc"
-| #define VERSION "7.2"
-| /* end confdefs.h.  */
-| 
-| int
-| main ()
-| {
-| 
-|   ;
-|   return 0;
-| }
-configure:4527: result: no
+configure:4486: $? = 0
+configure:4527: result: yes
 configure:4552: checking dependency style of g++
-configure:4663: result: none
+configure:4663: result: gcc3
 configure:4688: checking dependency style of gcc
 configure:4797: result: gcc3
 configure:4824: checking for thread model used by GCC
@@ -568,6 +465,110 @@ configure:13140: checking whether to build shared libraries
 configure:13161: result: yes
 configure:13164: checking whether to build static libraries
 configure:13168: result: yes
+configure:13191: checking how to run the C++ preprocessor
+configure:13218: g++ -E  conftest.cpp
+configure:13218: $? = 0
+configure:13232: g++ -E  conftest.cpp
+conftest.cpp:28:10: fatal error: ac_nonexistent.h: No such file or directory
+ #include <ac_nonexistent.h>
+          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+configure:13232: $? = 1
+configure: failed program was:
+| /* confdefs.h */
+| #define PACKAGE_NAME "gc"
+| #define PACKAGE_TARNAME "gc"
+| #define PACKAGE_VERSION "7.2"
+| #define PACKAGE_STRING "gc 7.2"
+| #define PACKAGE_BUGREPORT "bdwgc@lists.opendylan.org"
+| #define PACKAGE_URL ""
+| #define GC_VERSION_MAJOR 7
+| #define GC_VERSION_MINOR 2
+| #define PACKAGE "gc"
+| #define VERSION "7.2"
+| #define GC_LINUX_THREADS 1
+| #define _REENTRANT 1
+| #define THREAD_LOCAL_ALLOC 1
+| #define STDC_HEADERS 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_MEMORY_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_INTTYPES_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_DLFCN_H 1
+| #define LT_OBJDIR ".libs/"
+| /* end confdefs.h.  */
+| #include <ac_nonexistent.h>
+configure:13257: result: g++ -E
+configure:13277: g++ -E  conftest.cpp
+configure:13277: $? = 0
+configure:13291: g++ -E  conftest.cpp
+conftest.cpp:28:10: fatal error: ac_nonexistent.h: No such file or directory
+ #include <ac_nonexistent.h>
+          ^~~~~~~~~~~~~~~~~~
+compilation terminated.
+configure:13291: $? = 1
+configure: failed program was:
+| /* confdefs.h */
+| #define PACKAGE_NAME "gc"
+| #define PACKAGE_TARNAME "gc"
+| #define PACKAGE_VERSION "7.2"
+| #define PACKAGE_STRING "gc 7.2"
+| #define PACKAGE_BUGREPORT "bdwgc@lists.opendylan.org"
+| #define PACKAGE_URL ""
+| #define GC_VERSION_MAJOR 7
+| #define GC_VERSION_MINOR 2
+| #define PACKAGE "gc"
+| #define VERSION "7.2"
+| #define GC_LINUX_THREADS 1
+| #define _REENTRANT 1
+| #define THREAD_LOCAL_ALLOC 1
+| #define STDC_HEADERS 1
+| #define HAVE_SYS_TYPES_H 1
+| #define HAVE_SYS_STAT_H 1
+| #define HAVE_STDLIB_H 1
+| #define HAVE_STRING_H 1
+| #define HAVE_MEMORY_H 1
+| #define HAVE_STRINGS_H 1
+| #define HAVE_INTTYPES_H 1
+| #define HAVE_STDINT_H 1
+| #define HAVE_UNISTD_H 1
+| #define HAVE_DLFCN_H 1
+| #define LT_OBJDIR ".libs/"
+| /* end confdefs.h.  */
+| #include <ac_nonexistent.h>
+configure:13460: checking for ld used by g++
+configure:13527: result: /usr/bin/ld -m elf_x86_64
+configure:13534: checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld
+configure:13549: result: yes
+configure:13604: checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
+configure:14602: result: yes
+configure:14638: g++ -c -g -O2  conftest.cpp >&5
+configure:14641: $? = 0
+configure:15162: checking for g++ option to produce PIC
+configure:15169: result: -fPIC -DPIC
+configure:15177: checking if g++ PIC flag -fPIC -DPIC works
+configure:15195: g++ -c -g -O2  -fPIC -DPIC -DPIC conftest.cpp >&5
+configure:15199: $? = 0
+configure:15212: result: yes
+configure:15235: checking if g++ static flag -static works
+configure:15263: result: yes
+configure:15275: checking if g++ supports -c -o file.o
+configure:15296: g++ -c -g -O2  -o out/conftest2.o conftest.cpp >&5
+configure:15300: $? = 0
+configure:15322: result: yes
+configure:15327: checking if g++ supports -c -o file.o
+configure:15374: result: yes
+configure:15404: checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries
+configure:15440: result: yes
+configure:15581: checking dynamic linker characteristics
+configure:16246: result: GNU/Linux ld.so
+configure:16299: checking how to hardcode library paths into programs
+configure:16324: result: immediate
 configure:16410: checking whether Solaris gcc optimization fix is necessary
 configure:16433: result: no
 configure:16561: checking sys/dg_sys_info.h usability
@@ -726,7 +727,7 @@ configure:19661: running /bin/bash ./configure --disable-option-checking '--pref
 ac_cv_build=x86_64-unknown-linux-gnu
 ac_cv_c_compiler_gnu=yes
 ac_cv_c_inline=inline
-ac_cv_cxx_compiler_gnu=no
+ac_cv_cxx_compiler_gnu=yes
 ac_cv_env_ATOMIC_OPS_CFLAGS_set=
 ac_cv_env_ATOMIC_OPS_CFLAGS_value=
 ac_cv_env_ATOMIC_OPS_LIBS_set=
@@ -790,22 +791,24 @@ ac_cv_path_GREP=/bin/grep
 ac_cv_path_SED=/bin/sed
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
-ac_cv_prog_AWK=mawk
+ac_cv_prog_AWK=gawk
 ac_cv_prog_CPP='gcc -E'
+ac_cv_prog_CXXCPP='g++ -E'
 ac_cv_prog_ac_ct_AR=ar
 ac_cv_prog_ac_ct_CC=gcc
+ac_cv_prog_ac_ct_CXX=g++
 ac_cv_prog_ac_ct_MANIFEST_TOOL=mt
 ac_cv_prog_ac_ct_OBJDUMP=objdump
 ac_cv_prog_ac_ct_RANLIB=ranlib
 ac_cv_prog_ac_ct_STRIP=strip
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
-ac_cv_prog_cxx_g=no
+ac_cv_prog_cxx_g=yes
 ac_cv_prog_make_make_set=yes
 ac_cv_target=x86_64-unknown-linux-gnu
 am_cv_CCAS_dependencies_compiler_type=gcc3
 am_cv_CC_dependencies_compiler_type=gcc3
-am_cv_CXX_dependencies_compiler_type=none
+am_cv_CXX_dependencies_compiler_type=gcc3
 am_cv_make_support_nested_variables=yes
 am_cv_prog_cc_c_o=yes
 lt_cv_ar_at_file=@
@@ -817,14 +820,20 @@ lt_cv_ld_reload_flag=-r
 lt_cv_nm_interface='BSD nm'
 lt_cv_objdir=.libs
 lt_cv_path_LD=/usr/bin/ld
+lt_cv_path_LDCXX='/usr/bin/ld -m elf_x86_64'
 lt_cv_path_NM='/usr/bin/nm -B'
 lt_cv_path_mainfest_tool=no
 lt_cv_prog_compiler_c_o=yes
+lt_cv_prog_compiler_c_o_CXX=yes
 lt_cv_prog_compiler_pic='-fPIC -DPIC'
+lt_cv_prog_compiler_pic_CXX='-fPIC -DPIC'
 lt_cv_prog_compiler_pic_works=yes
+lt_cv_prog_compiler_pic_works_CXX=yes
 lt_cv_prog_compiler_rtti_exceptions=no
 lt_cv_prog_compiler_static_works=yes
+lt_cv_prog_compiler_static_works_CXX=yes
 lt_cv_prog_gnu_ld=yes
+lt_cv_prog_gnu_ldcxx=yes
 lt_cv_sharedlib_from_linklib_cmd='printf %s\n'
 lt_cv_shlibpath_overrides_runpath=yes
 lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[	 ][	 ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p'\'' | sed '\''/ __gnu_lto/d'\'''
@@ -859,7 +868,7 @@ AUTOHEADER='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/missing autoheader
 AUTOMAKE='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/missing automake-1.14'
 AVOID_CPP_LIB_FALSE=''
 AVOID_CPP_LIB_TRUE='#'
-AWK='mawk'
+AWK='gawk'
 CC='gcc'
 CCAS='gcc'
 CCASDEPMODE='depmode=gcc3'
@@ -873,9 +882,9 @@ CPLUSPLUS_TRUE='#'
 CPP='gcc -E'
 CPPFLAGS=''
 CXX='g++'
-CXXCPP=''
-CXXDEPMODE='depmode=none'
-CXXFLAGS=''
+CXXCPP='g++ -E'
+CXXDEPMODE='depmode=gcc3'
+CXXFLAGS='-g -O2'
 CYGPATH_W='echo'
 DARWIN_THREADS_FALSE=''
 DARWIN_THREADS_TRUE='#'
@@ -957,7 +966,7 @@ WIN32_THREADS_FALSE=''
 WIN32_THREADS_TRUE='#'
 ac_ct_AR='ar'
 ac_ct_CC='gcc'
-ac_ct_CXX=''
+ac_ct_CXX='g++'
 ac_ct_DUMPBIN=''
 addlibs=''
 addobjs=' mach_dep.lo'
@@ -967,8 +976,8 @@ am__fastdepCCAS_FALSE='#'
 am__fastdepCCAS_TRUE=''
 am__fastdepCC_FALSE='#'
 am__fastdepCC_TRUE=''
-am__fastdepCXX_FALSE=''
-am__fastdepCXX_TRUE='#'
+am__fastdepCXX_FALSE='#'
+am__fastdepCXX_TRUE=''
 am__include='include'
 am__isrc=''
 am__leading_dot='.'

@@ -36,6 +36,7 @@ PATH: /bin
 PATH: /usr/games
 PATH: /usr/local/games
 PATH: /snap/bin
+PATH: /opt/mssql-tools/bin
 
 
 ## ----------- ##
@@ -55,10 +56,8 @@ configure:2377: result: yes
 configure:2528: checking for a thread-safe mkdir -p
 configure:2567: result: /bin/mkdir -p
 configure:2574: checking for gawk
-configure:2604: result: no
-configure:2574: checking for mawk
-configure:2590: found /usr/bin/mawk
-configure:2601: result: mawk
+configure:2590: found /usr/bin/gawk
+configure:2601: result: gawk
 configure:2612: checking whether make sets $(MAKE)
 configure:2634: result: yes
 configure:2663: checking whether make supports nested variables
@@ -342,7 +341,7 @@ ac_cv_path_GREP=/bin/grep
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
 ac_cv_pic_macro=yes
-ac_cv_prog_AWK=mawk
+ac_cv_prog_AWK=gawk
 ac_cv_prog_CPP='cc -E'
 ac_cv_prog_ac_ct_CC=cc
 ac_cv_prog_ac_ct_RANLIB=ranlib
@@ -371,7 +370,7 @@ AM_V='$(V)'
 AUTOCONF='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/libatomic_ops/missing autoconf'
 AUTOHEADER='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/libatomic_ops/missing autoheader'
 AUTOMAKE='${SHELL} /home/ramiouvada/etu/DLP/ILP_SU/C/gc-7.2/libatomic_ops/missing automake-1.14'
-AWK='mawk'
+AWK='gawk'
 CC='cc'
 CCAS='cc'
 CCASDEPMODE='depmode=gcc3'
