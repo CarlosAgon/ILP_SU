@@ -37,7 +37,7 @@ expr returns [com.paracamplus.ilp1.interfaces.IASTexpression node]
       'in' body=expr # Binding
     | 'if' condition=expr 'then' consequence=expr 
         ('else' alternant=expr)? # Alternative
-    | body=expr 'unless' conditino=expr # Unless
+    | body=expr 'unless' condition=expr # Unless
     
 
 // ajouts

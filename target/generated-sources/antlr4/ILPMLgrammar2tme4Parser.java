@@ -477,7 +477,7 @@ public class ILPMLgrammar2tme4Parser extends Parser {
 	}
 	public static class UnlessContext extends ExprContext {
 		public ExprContext body;
-		public ExprContext conditino;
+		public ExprContext condition;
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
@@ -810,7 +810,7 @@ public class ILPMLgrammar2tme4Parser extends Parser {
 						setState(119);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(120); match(T__27);
-						setState(121); ((UnlessContext)_localctx).conditino = expr(4);
+						setState(121); ((UnlessContext)_localctx).condition = expr(4);
 						}
 						break;
 					case 8:
