@@ -1,9 +1,0 @@
-class Point extends Object
-{
-    var x;
-    var y;
-
-    method print () 832;
-}
-
-(new Point(11, 22)).print()
